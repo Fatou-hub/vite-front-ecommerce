@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
+    "@commitlint/config-conventional": "19.7.1",
     "@tanstack/eslint-plugin-query": "5.50.0",
     "@testing-library/jest-dom": "6.4.6",
     "@testing-library/react": "16.0.0",
