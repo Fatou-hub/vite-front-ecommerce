@@ -1,10 +1,10 @@
-import RemoveCartButton from "./features/cart/remove-cart-product/ui/RemoveCartButton";
+import CartCount from "./features/cart/display-cart-count/ui/CartCount";
 
 function App() {
   return (
-    <>
-    <RemoveCartButton removeFromCart={() => console.log('Retirer du panier')} />
-    </> 
+    <div className="mt-3">
+      <CartCount cartCount={3}/>
+    </div>
   );
 };
 
