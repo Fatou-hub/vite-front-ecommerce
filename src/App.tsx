@@ -1,10 +1,9 @@
-import CartCount from "./features/cart/display-cart-count/ui/CartCount";
+import ProductSearch from "./features/product/search-products/ui/ProductSearch";
+
 
 function App() {
   return (
-    <div className="mt-3">
-      <CartCount cartCount={3}/>
-    </div>
+    <ProductSearch/>
   );
 };
 
