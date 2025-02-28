@@ -1,13 +1,14 @@
-import ProductSearch from "./features/product/search-products/ui/ProductSearch";
-
+import Header from "./common/layout/Header";
 
 function App() {
   const onSubmit = (search : string) => {
     console.log(search);
-  }
+  };
+
+  const cartCount = 2;
 
   return (
-    <ProductSearch onSubmit={onSubmit}/>
+    <Header onSubmit={onSubmit} cartCount={cartCount}/>
   );
 };
 

@@ -20,8 +20,9 @@ const ProductSearch = ({onSubmit}: Props): ReactElement => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input 
+        <form className='flex w-full' onSubmit={handleSubmit}>
+            <input
+            className='w-full' 
                 type="text"
                 id="product-search"
                 name="product-search"
