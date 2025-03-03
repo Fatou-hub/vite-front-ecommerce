@@ -1,5 +1,6 @@
 import Header from "./common/layout/Header";
-import ProductItem from "./features/product/list-products/ui/ProductItem";
+import ProductList from "./features/product/list-products/ui/ProductList";
+import { ProducItemData } from "./features/product/list-products/types";
 
 function App() {
   const onSubmit = (search: string) => {
@@ -8,16 +9,32 @@ function App() {
 
   const cartCount = 2;
 
-  const product = {
-    name: 'Diaper new born Baby',
-    picture: '',
-    price: 1000,
-  }
+  const products: ProducItemData[] = [
+    {
+      id: '1',
+      name: 'Premium Diapers',
+      picture: '',
+      price: 5,
+      },
+      {
+      id: '2',
+      name: 'Gentle Wipes',
+      picture: '',
+      price: 50,
+      },
+      {
+      id: '3',
+      name: 'Diapers Pants',
+      picture: '',
+      price: 34,
+      },
+  ];
+
 
   return (
     <>
       <Header onSubmit={onSubmit} cartCount={cartCount} />
-      <ProductItem product={product} />
+      <ProductList products={products} />
     </>
 
   );
