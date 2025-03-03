@@ -1,13 +1,11 @@
 import type { ReactElement } from "react";
 import { Panorama } from "@mui/icons-material";
+import { ProducItemData } from "../../types";
 
 type Props = {
-    product: {
-        name: string;
-        picture: string;
-        price:number;
-    }
+    product: Omit<ProducItemData, 'id'>;
 }
+
 const ProductItem = ({product: {picture, name, price},}: Props): ReactElement => {
     return (
         <div className="flex flex-col items-center justify-center w-64 p-4 m-4 bg-white rounded shadow-md">
