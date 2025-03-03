@@ -8,7 +8,7 @@ type Props = {
 
 const ProductList = ({ products }: Props): ReactElement =>{
     return(
-        <div>
+        <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center">
             {products.map((product)=> {
                 const { id, ...productWithoutId } = product;
             
