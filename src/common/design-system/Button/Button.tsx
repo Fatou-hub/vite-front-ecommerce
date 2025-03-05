@@ -22,7 +22,7 @@ const Button = ({ children, variant = 'text', type = 'button', disabled = false,
             onClick={onClick}
             sx={{
                 backgroundColor: color, // Custom background color
-                color: '#00a3a3', // You can adjust the text color here as well
+                color: 'white', // You can adjust the text color here as well
                 '&:hover': {
                     backgroundColor: `${color}99`, // Lighter color on hover
                 },
