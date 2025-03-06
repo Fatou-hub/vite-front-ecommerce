@@ -2,8 +2,9 @@ import type { ProducItemData } from "./features/product/list-products/types";
 import Header from "./common/layout/Header";
 import Product from "./features/product/display-product/ui/Product/Product";
 import type { ProductData } from "./features/product/display-product/types";
-import CartProductTem from "./features/cart/list-cart-products/ui/CartProductItem";
-import { cartProductItemData } from "./features/cart/list-cart-products/types";
+import { CartProductItemData } from "./features/cart/list-cart-products/types";
+import CartProductList from "./features/cart/list-cart-products/ui/CartProductList";
+
 
 
 
@@ -47,11 +48,26 @@ function App() {
     console.log('Add to cart');
   }
 
-  const cartProduct : Omit<cartProductItemData, 'id'> = {
-    name: 'MYBABY Diapers ',
-    picture: '',
-    price: 4,
-  }
+  const cartProducts : CartProductItemData[] = [
+    {
+      id:'1',
+      name: 'MYBABY Diapers',
+      picture: '',
+      price: 4,
+    },
+    {
+      id:'2',
+      name: 'MYBABY wipes',
+      picture: '',
+      price: 2,
+    },
+    {
+      id:'3',
+      name: 'MYBABY Pants',
+      picture: '',
+      price: 10,
+    }, 
+  ];
 
   const removeFromCart = () : void => {
     console.log('Remove from cart');
@@ -60,7 +76,7 @@ function App() {
   return (
     <>
       <Header onSubmit={onSubmit} cartCount={cartCount} />
-      <CartProductTem cartProduct={cartProduct} removeFromCart={removeFromCart} />
+      <CartProductList cartProducts={cartProducts} removeFromCart={removeFromCart} />
     </>
 
   );
