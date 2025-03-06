@@ -1,12 +1,12 @@
 import type { ReactElement } from "react";
 import { Panorama } from "@mui/icons-material";
 import classNames from "classnames";
-import type { cartProductItemData } from "../../types";
+import type { CartProductItemData } from "../../types";
 import RemoveCartButton from "../../../remove-cart-product/ui/RemoveCartButton";
 
 
 type Props = {
-    cartProduct:Omit<cartProductItemData, 'id'>;
+    cartProduct:Omit<CartProductItemData, 'id'>;
     removeFromCart : () => void;
 }
 
