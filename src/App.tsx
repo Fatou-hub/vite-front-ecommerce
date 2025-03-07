@@ -4,7 +4,8 @@ import Product from "./features/product/display-product/ui/Product/Product";
 import type { ProductData } from "./features/product/display-product/types";
 import { CartProductItemData } from "./features/cart/list-cart-products/types";
 import CartProductList from "./features/cart/list-cart-products/ui/CartProductList";
-
+import { Routes, Route } from "react-router-dom";
+import ProductList from "./features/product/list-products/ui/ProductList";
 
 
 
@@ -76,7 +77,15 @@ function App() {
   return (
     <>
       <Header onSubmit={onSubmit} cartCount={cartCount} />
-      <CartProductList cartProducts={cartProducts} removeFromCart={removeFromCart} />
+      <Routes>
+        
+        <Route path="/" element={<ProductList products={products}/>}/>
+
+        <Route path="/product/:id" element={<Product product={product} addToCart={addToCart}/>}/>
+
+        <Route path="/cart" element={<CartProductList cartProducts={cartProducts} removeFromCart={removeFromCart}/>}/>
+
+      </Routes>
     </>
 
   );
