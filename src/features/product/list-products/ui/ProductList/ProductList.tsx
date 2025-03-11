@@ -15,7 +15,7 @@ const ProductList = ({ products }: Props): ReactElement => {
 
                 return (
                     <Link key={id} to={`/product/${id}`}>
-                        <ProductItem product={productWithoutId} />;
+                        <ProductItem product={productWithoutId} />
                     </Link>
                 );
             })}

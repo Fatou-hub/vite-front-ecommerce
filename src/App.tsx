@@ -1,4 +1,5 @@
-import type { ProducItemData } from "./features/product/list-products/types";
+import { useState, ReactElement } from "react";
+import type { ProductItemData } from "./features/product/list-products/types";
 import Header from "./common/layout/Header";
 import Product from "./features/product/display-product/ui/Product/Product";
 import type { ProductData } from "./features/product/display-product/types";
@@ -9,14 +10,8 @@ import ProductList from "./features/product/list-products/ui/ProductList";
 
 
 
-function App() {
-  const onSubmit = (search: string) => {
-    console.log(search);
-  };
-
-  const cartCount = 2;
-
-  const products: ProducItemData[] = [
+function App(): ReactElement {
+  const [products, setProducts] = useState<ProductItemData[]>([
     {
       id: '1',
       name: 'Premium Diapers',
@@ -35,7 +30,16 @@ function App() {
       picture: '',
       price: 34,
     },
-  ];
+  ]);
+
+
+  const onSubmit = (search: string) => {
+    console.log(search);
+  };
+
+  const cartCount = 2;
+
+
 
 
   const product: ProductData = {
