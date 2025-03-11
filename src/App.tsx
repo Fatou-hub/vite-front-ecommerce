@@ -11,7 +11,8 @@ import ProductList from "./features/product/list-products/ui/ProductList";
 
 
 function App(): ReactElement {
-  const [products, setProducts] = useState<ProductItemData[]>([
+
+  const allProducts : ProductItemData[] = [
     {
       id: '1',
       name: 'Premium Diapers',
@@ -30,11 +31,17 @@ function App(): ReactElement {
       picture: '',
       price: 34,
     },
-  ]);
+  ]
+
+  const [products, setProducts] = useState<ProductItemData[]>(allProducts);
 
 
-  const onSubmit = (search: string) => {
-    console.log(search);
+  const onSubmit = (search: string): void => {
+    const filteredProducts = allProducts.filter((product)=>
+
+    product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+  );
+  setProducts(filteredProducts);
   };
 
   const cartCount = 2;
