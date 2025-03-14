@@ -1,10 +1,10 @@
 import type { ReactElement } from "react";
-import { ProducItemData } from "../../types";
+import { ProductItemData } from "../../types";
 import ProductItem from "../ProductItem";
 import { Link } from "react-router-dom";
 
 type Props = {
-    products: ProducItemData[];
+    products: ProductItemData[];
 }
 
 const ProductList = ({ products }: Props): ReactElement => {
