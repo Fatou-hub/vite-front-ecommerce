@@ -1,4 +1,4 @@
-export interface ProducItemData {
+export interface ProductItemData {
     id:string;
     name:string;
     picture:string;
