@@ -28,13 +28,41 @@ function App(): ReactElement {
       name: 'MYBABY Pants',
       picture: '',
       price: 10,
-      description:"    Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
+      description:"Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
     },
     '4':{
       name: 'MYBABY Diapers',
       picture: '',
       price: 10,
-      description:"    Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
+      description:" Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
+    },
+  }
+
+  const productToAddToCart: Record<string, CartProductItemData> = {
+
+    '1':{
+      id:'1',
+      name: 'MYBABY Premium Diapers',
+      picture: '',
+      price: 5,
+    },
+    '2':{
+      id:'2',
+      name: 'MYBABY Gentle wipes',
+      picture: '',
+      price: 2,
+    },
+   '3': {
+      id:'3',
+      name: 'MYBABY Pants',
+      picture: '',
+      price: 10,
+    }, 
+    '4': {
+      id:'4',
+      name: 'MYBABY Diapers',
+      picture: '',
+      price: 10,
     },
   }
 
@@ -66,8 +94,8 @@ function App(): ReactElement {
   ]
 
   const [products, setProducts] = useState<ProductItemData[]>(allProducts);
-
   const [product, setProduct] = useState<ProductData>(productToDisplay['1']);
+  const [cartProducts, setCartProducts] = useState<CartProductItemData[]>([]);
   
   const matchProductPage = useMatch('/product/:id');
 
@@ -81,30 +109,16 @@ function App(): ReactElement {
 
   const cartCount = 2;
 
-  const addToCart = (): void => {
-    console.log('Add to cart');
-  }
+  const addToCart = (productId: string): void => {
+    const isProductInCart = cartProducts.some((product)=> 
+      product.id === productId);
 
-  const cartProducts : CartProductItemData[] = [
-    {
-      id:'1',
-      name: 'MYBABY Diapers',
-      picture: '',
-      price: 4,
-    },
-    {
-      id:'2',
-      name: 'MYBABY wipes',
-      picture: '',
-      price: 2,
-    },
-    {
-      id:'3',
-      name: 'MYBABY Pants',
-      picture: '',
-      price: 10,
-    }, 
-  ];
+    if(!isProductInCart){
+      const productToAdd = productToAddToCart[productId];
+
+      setCartProducts([...cartProducts, productToAdd]);
+    }
+  };
 
   const removeFromCart = () : void => {
     console.log('Remove from cart');
