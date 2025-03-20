@@ -124,8 +124,12 @@ function App(): ReactElement {
     }
   };
 
-  const removeFromCart = () : void => {
-    console.log('Remove from cart');
+  const removeFromCart = (productId: CartProductItemData['id']) : void => {
+    const cartProductWithoutTheRemovedOne = cartProducts.filter(
+      (cartProduct) => cartProduct.id !== productId,
+    );
+
+     setCartProducts(cartProductWithoutTheRemovedOne);
   }
 
 const changeURL = (productId: string): void =>{

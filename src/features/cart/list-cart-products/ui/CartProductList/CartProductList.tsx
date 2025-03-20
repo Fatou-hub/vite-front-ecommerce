@@ -6,7 +6,7 @@ import CartProductItem from "../CartProductItem";
 
 type Props = {
     cartProducts: CartProductItemData[];
-    removeFromCart: () => void;
+    removeFromCart: (productId:CartProductItemData['id']) => void;
 }
 
 
@@ -21,7 +21,7 @@ return(
                 className="[&:not(:last-child)]:border-b border-gray-300 border-solid pb-4">
                 <CartProductItem 
                     cartProduct={cartProductWithoutId}
-                    removeFromCart={removeFromCart}
+                    removeFromCart={()=> removeFromCart(id)}
                     />
                 </div>
             )
