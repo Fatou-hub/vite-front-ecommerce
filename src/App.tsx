@@ -50,25 +50,25 @@ function App(): ReactElement {
     '1':{
       id:'1',
       name: 'MYBABY Premium Diapers',
-      picture: '',
+      picture:premiumDiapersImg,
       price: 5,
     },
     '2':{
       id:'2',
       name: 'MYBABY Gentle wipes',
-      picture: '',
+      picture:gentleWipesImg,
       price: 2,
     },
    '3': {
       id:'3',
       name: 'MYBABY Pants',
-      picture: '',
+      picture: pantsDiapersImg,
       price: 10,
     }, 
     '4': {
       id:'4',
       name: 'MYBABY Diapers',
-      picture: '',
+      picture: diapersPackImg,
       price: 10,
     },
   }
@@ -103,6 +103,7 @@ function App(): ReactElement {
   const [products, setProducts] = useState<ProductItemData[]>(allProducts);
   const [product, setProduct] = useState<ProductData>(productToDisplay['1']);
   const [cartProducts, setCartProducts] = useState<CartProductItemData[]>([]);
+  const [cartCount, setCartCount] = useState<number>(0);
   
   const matchProductPage = useMatch('/product/:id');
 
@@ -113,8 +114,6 @@ function App(): ReactElement {
   );
   setProducts(filteredProducts);
   };
-
-  const cartCount = 2;
 
   const addToCart = (productId: string): void => {
     const isProductInCart = cartProducts.some((product)=> 
