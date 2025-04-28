@@ -7,7 +7,10 @@ import { CartProductItemData } from "./features/cart/list-cart-products/types";
 import CartProductList from "./features/cart/list-cart-products/ui/CartProductList";
 import { Routes, Route, useMatch } from "react-router-dom";
 import ProductList from "./features/product/list-products/ui/ProductList";
-
+import premiumDiapersImg from "./assets/premium_diapers.png";
+import gentleWipesImg from "./assets/gentle_wipes.png";
+import pantsDiapersImg from "./assets/pants.png";
+import diapersPackImg from "./assets/diapers_pack.png";
 
 
 function App(): ReactElement {
@@ -15,28 +18,28 @@ function App(): ReactElement {
     '1':{
       id:"1",
       name: "MYBABY Premium Diapers",
-      picture: "",
+      picture: premiumDiapersImg,
       price: 5,
       description:"These diapers are made for babies from 12 to 28 months. It offers soft and toxic free components for the safety of your baby butt. Our MYBABY diapers respects the sensitiveness of a baby skin especially the down area after doing the duty. Yes there are NO : WITHOUT LOTION, PERFUME, PETROLATUM; TCF cellulose pulp from responsibly managed FSC® certified forests and other controlled sources; Backsheet sails maintenance and acquisition-receiver",
     },
     '2':{
       id:"2",
       name: 'MYBABY Gentle wipes',
-      picture: '',
+      picture: gentleWipesImg,
       price: 2,
       description:"It is made for newborns, babies, and toddlers, Fragrance Free, Hypoallergenic, Safe for sensitive skin ",
     },
     '3':{
       id:"3",
       name: 'MYBABY Pants',
-      picture: '',
+      picture: pantsDiapersImg,
       price: 10,
       description:"Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
     },
     '4':{
       id:"4",
       name: 'MYBABY Diapers',
-      picture: '',
+      picture: diapersPackImg,
       price: 10,
       description:" Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
     },
@@ -47,25 +50,25 @@ function App(): ReactElement {
     '1':{
       id:'1',
       name: 'MYBABY Premium Diapers',
-      picture: '',
+      picture:premiumDiapersImg,
       price: 5,
     },
     '2':{
       id:'2',
       name: 'MYBABY Gentle wipes',
-      picture: '',
+      picture:gentleWipesImg,
       price: 2,
     },
    '3': {
       id:'3',
       name: 'MYBABY Pants',
-      picture: '',
+      picture: pantsDiapersImg,
       price: 10,
     }, 
     '4': {
       id:'4',
       name: 'MYBABY Diapers',
-      picture: '',
+      picture: diapersPackImg,
       price: 10,
     },
   }
@@ -74,25 +77,25 @@ function App(): ReactElement {
     {
       id: '1',
       name: ' MYBABY Premium Diapers',
-      picture: '',
+      picture: premiumDiapersImg,
       price: 5,
     },
     {
       id: '2',
       name: 'MYBABY Gentle Wipes',
-      picture: '',
+      picture: gentleWipesImg,
       price: 50,
     },
     {
       id: '3',
       name: 'MYBABY Pants',
-      picture: '',
+      picture: pantsDiapersImg,
       price: 34,
     },
     {
       id: '4',
       name: 'MYBABY Diapers',
-      picture: '',
+      picture: diapersPackImg,
       price: 20,
     },
   ]
@@ -100,6 +103,7 @@ function App(): ReactElement {
   const [products, setProducts] = useState<ProductItemData[]>(allProducts);
   const [product, setProduct] = useState<ProductData>(productToDisplay['1']);
   const [cartProducts, setCartProducts] = useState<CartProductItemData[]>([]);
+  const [cartCount, setCartCount] = useState<number>(0);
   
   const matchProductPage = useMatch('/product/:id');
 
@@ -110,8 +114,6 @@ function App(): ReactElement {
   );
   setProducts(filteredProducts);
   };
-
-  const cartCount = 2;
 
   const addToCart = (productId: string): void => {
     const isProductInCart = cartProducts.some((product)=> 
