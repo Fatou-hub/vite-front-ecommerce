@@ -44,7 +44,7 @@ function App(): ReactElement {
       description:" Up to 100% leakproof protection with Dual Leak-Guard Barriers 360 stretchy waistband, Soft and comfy, underwear like fit, Dermatologically tested and hypoallergenic",
     },
   }
-
+  
   const productToAddToCart: Record<string, CartProductItemData> = {
 
     '1':{
@@ -123,6 +123,7 @@ function App(): ReactElement {
       const productToAdd = productToAddToCart[productId];
 
       setCartProducts([...cartProducts, productToAdd]);
+      setCartCount(cartCount + 1);
     }
   };
 
@@ -132,6 +133,7 @@ function App(): ReactElement {
     );
 
      setCartProducts(cartProductWithoutTheRemovedOne);
+     setCartCount(cartCount - 1);
   }
 
 const changeURL = (productId: string): void =>{
