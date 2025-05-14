@@ -8,7 +8,7 @@ type Props = {
 
 const CartCount = ({cartCount} : Props): ReactElement => {
     return (
-        <Badge badgeContent={cartCount} color="error">
+        <Badge badgeContent={cartCount} showZero color="error">
             <ShoppingCart />
         </Badge>
     )
