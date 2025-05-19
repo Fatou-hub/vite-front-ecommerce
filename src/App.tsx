@@ -14,13 +14,11 @@ import { productToDisplay } from "./features/product/display-product/data/produc
 
 function App(): ReactElement {
 
-  
+  const matchProductPage = useMatch('/product/:id');
   const [products, setProducts] = useState<ProductItemData[]>(allProducts);
   const [product, setProduct] = useState<ProductData>(productToDisplay['1']);
   const [cartProducts, setCartProducts] = useState<CartProductItemData[]>([]);
   const [cartCount, setCartCount] = useState<number>(0);
-  
-  const matchProductPage = useMatch('/product/:id');
 
   const onSubmit = (search: string): void => {
     const filteredProducts = allProducts.filter((product)=>
@@ -31,8 +29,9 @@ function App(): ReactElement {
   };
 
   const addToCart = (productId: string): void => {
-    const isProductInCart = cartProducts.some((product)=> 
-      product.id === productId);
+    const isProductInCart = cartProducts.some(
+      (product)=> product.id === productId
+    );
 
     if(!isProductInCart){
       const productToAdd = productToAddToCart[productId];
@@ -51,14 +50,14 @@ function App(): ReactElement {
      setCartCount(cartCount - 1);
   }
 
-const changeURL = (productId: string): void =>{
+const changeURL = (productId: string): void => {
   setProduct(productToDisplay[productId]);
-}
+};
 
   useEffect(()=>{
     const ProductIdInURL = matchProductPage?.params.id;
 
-    if(ProductIdInURL){
+    if(ProductIdInURL) {
       changeURL(ProductIdInURL);
     }
   }, [matchProductPage]);
@@ -71,13 +70,26 @@ const changeURL = (productId: string): void =>{
         
         <Route path="/" element={<ProductList products={products}/>}/>
 
-        <Route path="/product/:id" element={<Product product={product} addToCart={()=> addToCart(product.id)}/>}/>
+        <Route 
+        path="/product/:id" 
+        element={
+        <Product 
+          product={product} 
+          addToCart={()=> addToCart(product.id)}
+          />
+          }/>
 
-        <Route path="/cart" element={<CartProductList cartProducts={cartProducts} removeFromCart={removeFromCart}/>}/>
-
+        <Route 
+          path="/cart" 
+          element={
+            <CartProductList 
+              cartProducts={cartProducts} 
+              removeFromCart={removeFromCart}
+              />
+              }
+            />
       </Routes>
     </>
-
   );
 };
 
