@@ -1,8 +1,5 @@
 import { CartProductItemData } from "../../list-cart-products/types"
-import premiumDiapersImg from "./assets/premium_diapers.png";
-import gentleWipesImg from "./assets/gentle_wipes.png";
-import pantsDiapersImg from "./assets/pants.png";
-import diapersPackImg from "./assets/diapers_pack.png";
+import { diapersPack, gentleWipes, pants, premiumDiapers } from "../../../../assets/imagePaths";
 
 
 export const productToAddToCart: Record<string, CartProductItemData> = {
@@ -10,25 +7,25 @@ export const productToAddToCart: Record<string, CartProductItemData> = {
     '1':{
       id:'1',
       name: 'MYBABY Premium Diapers',
-      picture:premiumDiapersImg,
+      picture:premiumDiapers,
       price: 5,
     },
     '2':{
       id:'2',
       name: 'MYBABY Gentle wipes',
-      picture:gentleWipesImg,
+      picture:gentleWipes,
       price: 2,
     },
    '3': {
       id:'3',
       name: 'MYBABY Pants',
-      picture: pantsDiapersImg,
+      picture: pants,
       price: 10,
     }, 
     '4': {
       id:'4',
       name: 'MYBABY Diapers',
-      picture: diapersPackImg,
+      picture: diapersPack,
       price: 10,
     },
   }
