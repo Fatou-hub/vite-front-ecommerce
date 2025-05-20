@@ -1,5 +1,3 @@
-
-
 import type { ReactElement } from 'react';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useMatch } from 'react-router-dom';
@@ -11,7 +9,7 @@ import { productToDisplay } from './features/product/display-product/data/produc
 import { getProducts } from './features/product/list-products/api/getProducts';
 import { getProduct } from './features/product/display-product/api/getProduct';
 import { searchProducts } from './features/product/search-products/api/searchProducts';
-  import {addProductToCart,getCartCount,getCartProducts, removeProductFromCart} from './features/cart/api/cart';
+import {addProductToCart,getCartCount,getCartProducts, removeProductFromCart} from './features/cart/api/cart';
 import Header from './common/layout/Header';
 import ProductList from './features/product/list-products/ui/ProductList';
 import Product from './features/product/display-product/ui/Product/Product';
