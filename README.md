@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+# Lancer l'application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+commande GIT : npm run dev
 
-Currently, two official plugins are available:
+# 👶 Baby E-commerce — React + TypeScript + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bienvenue sur mon projet de boutique en ligne dédiée à l'univers du bébé (couches, lingettes, biberons...).  
+Il s'agit d'une application e-commerce développée en **React** avec **TypeScript** et **Vite**, dans un objectif d’apprentissage et de montée en compétences fullstack front.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ✨ Fonctionnalités
 
-- Configure the top-level `parserOptions` property like this:
+- 🛍️ Affichage de produits
+- 🔍 Recherche dynamique
+- 🧺 Ajout / suppression d’articles au panier
+- 🧾 Affichage du panier avec quantité
+- ♻️ Architecture modulaire par fonctionnalités (feature-based)
+- 💄 Design system réutilisable (boutons, layout)
+- ⚙️ Appels API simulés avec des fichiers mock
+- ⚡ Vite pour un développement rapide
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+---
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🗂️ Structure du projet
 
+L'application suit une architecture modulaire, centrée autour des fonctionnalités (`features`). Cela permet une meilleure maintenabilité et évolutivité du code.
 
-# React + Vite 💻
-To launch the app run this Git command : npm run dev !
+# Commits conventionnés
 
+structure d’un message de commit qui respecte les règles des Conventional Commits :
+<type>[optional scope]: <description>
+Le type correspond au type de tâches effectués:
 
-# Technical test - E-commerce web app - COMPANY NAME - specifications asked by the company
+- feat : création d’une fonctionnalité pour l’utilisateur.rice (feat est le
+  diminutif de feature)
+- fix : correction d’un bug pour l’utilisateur.rice
+- refactor : refactor du code de production
+- test : création et refactor de tests
+- chore : configuration du projet (configuration du linting de commit,
+  par exemple )
 
-## The end goal 🛣️
-You will create an e-commerce web app.
-
-## Features 🤖
-Your web app should include the following features:
-👉🏾 list products, on homepage (name, picture and price of each
-product)
-👉🏾 search products, on homepage
-👉🏾 display product, on their own page (name, picture, price and
-description)
-👉🏾 display cart count, in header
-👉🏾list cart products, on cart page (name, picture and price of each
-cart product)
-👉🏾 add product to cart, on product page
-👉🏾 remove product from cart, on cart page
-
-## Bonus ➕➕➕
-If you have time, you may want to add this in your code:
-
-Réussir ses tests techniques en développement web • Abeba NGWE 18
-- tests
-- checkout page
-- order page
-- suggested products, on the product page
-- any feature you find relevant
-
-## Stack 💻
-- The React model that we sent you for this test
-
-## Deadline 🕰️
-- you've got a week to complete this assignment
+exemple de message de commit suivant :
+"feat(cart): define AddCartButton component"
