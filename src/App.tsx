@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import { Routes, Route, useMatch } from 'react-router-dom';
 import type { ProductItemData } from './features/product/list-products/types';
 import type { ProductData } from './features/product/display-product/types';
@@ -14,35 +14,31 @@ import Header from './common/layout/Header';
 import ProductList from './features/product/list-products/ui/ProductList';
 import Product from './features/product/display-product/ui/Product/Product';
 import CartProductList from './features/cart/list-cart-products/ui/CartProductList';
-
+import { reducer } from './features/common/reducer';
+import { initialState } from './features/common/state/initialState';
 
 
 function App(): ReactElement {
-
+  const [state, dispatch] = useReducer(reducer,initialState );
   const matchHomePage = useMatch('/');
   const matchProductPage = useMatch('/product/:id');
   const matchCartPage = useMatch('/cart');
 
-  const [products, setProducts] =
-    useState<ProductItemData[]>(allProducts);
-
-  const [product, setProduct] =
-    useState<ProductData>(productToDisplay['1']);
-
-  const [cartProducts, setCartProducts] =
-    useState<CartProductItemData[]>([]);
-
-  const [cartCount, setCartCount] = useState<number>(0);
 
   const onSubmit = async (search: string): Promise<void> => {
     const filteredProducts = await searchProducts(search);
-    setProducts(filteredProducts);
+    dispatch({
+      type: 'products/filtered',
+      payload:filteredProducts,
+    });
   };
 
   const addToCart = async (productId: string): Promise<void> => {
     const updatedCart = await addProductToCart(productId);
-    setCartProducts(updatedCart.cartProducts);
-    setCartCount(updatedCart.cartCount);
+    dispatch({
+      type:'cart/added',
+      payload:updatedCart,
+    });
   };
 
   const removeFromCart = async (
@@ -50,28 +46,42 @@ function App(): ReactElement {
   ): Promise<void> => {
     const updatedCart = await removeProductFromCart(productId);
 
-    setCartProducts(updatedCart.cartProducts);
-    setCartCount(updatedCart.cartCount);
+    dispatch({
+      type:'cart/removed',
+      payload:updatedCart,
+    });
   };
 
   const fetchProduct = async (productId: string): Promise<void> => {
     const product = await getProduct(productId);
-    setProduct(product);
+    dispatch({
+      type:'product/fetched',
+      payload:product,
+    });
   };
 
   const fetchProducts = async (): Promise<void> => {
     const initialProducts = await getProducts();
-    setProducts(initialProducts);
+    dispatch({
+      type:'products/fetched',
+      payload:initialProducts,
+    });
   };
 
   const fetchCartCount = async (): Promise<void> => {
     const initialCartCount = await getCartCount();
-    setCartCount(initialCartCount);
+    dispatch({
+      type:'cartCount/fetched',
+      payload:initialCartCount,
+    });
   };
 
   const fetchCartProducts = async (): Promise<void> => {
     const initialCartProducts = await getCartProducts();
-    setCartProducts(initialCartProducts);
+    dispatch({
+      type:'cartProducts/fetched',
+      payload:initialCartProducts,
+    });
   };
 
   useEffect(() => {
@@ -93,18 +103,19 @@ function App(): ReactElement {
     }
   }, [matchProductPage]);
   
+
   return (
     <>
-      <Header onSubmit={onSubmit} cartCount={cartCount} />
+      <Header onSubmit={onSubmit} cartCount={state.cartCount} />
       <Routes>
-        <Route path="/" element={<ProductList products={products} />}
+        <Route path="/" element={<ProductList products={state.products} />}
         />
         <Route
           path="/product/:id"
           element={
             <Product
-              product={product}
-              addToCart={() => addToCart(product.id)}
+              product={state.product}
+              addToCart={() => addToCart(state.product.id)}
             />
           }
         />
@@ -112,7 +123,7 @@ function App(): ReactElement {
           path="/cart"
           element={
             <CartProductList
-              cartProducts={cartProducts}
+              cartProducts={state.cartProducts}
               removeFromCart={removeFromCart}
             />
           }
