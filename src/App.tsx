@@ -1,11 +1,7 @@
 import type { ReactElement } from 'react';
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { Routes, Route, useMatch } from 'react-router-dom';
-import type { ProductItemData } from './features/product/list-products/types';
-import type { ProductData } from './features/product/display-product/types';
 import type { CartProductItemData } from './features/cart/list-cart-products/types';
-import { allProducts } from './features/product/list-products/data/allProducts';
-import { productToDisplay } from './features/product/display-product/data/productToDisplay';
 import { getProducts } from './features/product/list-products/api/getProducts';
 import { getProduct } from './features/product/display-product/api/getProduct';
 import { searchProducts } from './features/product/search-products/api/searchProducts';
