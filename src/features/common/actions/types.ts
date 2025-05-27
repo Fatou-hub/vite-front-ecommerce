@@ -9,7 +9,7 @@ interface ProductsFetchedActionData {
 }
 
 interface ProductsFilteredActionData {
-    type : ' products/filtered';
+    type : 'products/filtered';
     payload:ProductItemData[];
 }
 

@@ -13,7 +13,7 @@ export const reducer = ( state: StateData, action: ActionData): StateData => {
             };
             return newState;
         };
-        case " products/filtered":{
+        case "products/filtered":{
              const productsFiltered = action.payload;
 
              const newState = {
