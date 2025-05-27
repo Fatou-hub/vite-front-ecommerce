@@ -104,7 +104,7 @@ function App(): ReactElement {
   return (
     <>
     <StoreContextProvider>
-      <Header cartCount={state.cartCount} />
+      <Header />
         <Routes>
           <Route path="/" element={<ProductList products={state.products} />}
           />
