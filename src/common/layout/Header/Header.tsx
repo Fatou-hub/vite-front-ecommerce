@@ -3,11 +3,9 @@ import ProductSearch from "../../../features/product/search-products/ui/ProductS
 import CartCount from "../../../features/cart/display-cart-count/ui/CartCount";
 import { Link } from "react-router-dom";
 
-type Props = {
-    cartCount: number;
-};
 
-const Header = ({ cartCount }: Props): ReactElement => {
+
+const Header = (): ReactElement => {
     return (
         <header className="p-4 bg-primary flex items-center justify-between">
             {/* Logo Site */}
@@ -22,7 +20,7 @@ const Header = ({ cartCount }: Props): ReactElement => {
 
             {/* Panier à droite */}
             <Link to="/cart" className="text-white">
-                <CartCount cartCount={cartCount} />
+                <CartCount />
             </Link>
         </header>
     );
