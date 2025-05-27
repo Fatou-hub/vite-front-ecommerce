@@ -4,11 +4,10 @@ import CartCount from "../../../features/cart/display-cart-count/ui/CartCount";
 import { Link } from "react-router-dom";
 
 type Props = {
-    onSubmit: (search: string) => void;
     cartCount: number;
 };
 
-const Header = ({ onSubmit, cartCount }: Props): ReactElement => {
+const Header = ({ cartCount }: Props): ReactElement => {
     return (
         <header className="p-4 bg-primary flex items-center justify-between">
             {/* Logo Site */}
@@ -18,7 +17,7 @@ const Header = ({ onSubmit, cartCount }: Props): ReactElement => {
 
             {/* Barre de recherche au centre */}
             <div className="flex-grow mx-4"> {/* 'flex-grow' permet de pousser la recherche au centre */}
-                <ProductSearch onSubmit={onSubmit} />
+                <ProductSearch />
             </div>
 
             {/* Panier à droite */}

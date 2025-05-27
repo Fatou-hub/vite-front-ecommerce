@@ -12,6 +12,7 @@ import Product from './features/product/display-product/ui/Product/Product';
 import CartProductList from './features/cart/list-cart-products/ui/CartProductList';
 import { reducer } from './features/common/reducer';
 import { initialState } from './features/common/state/initialState';
+import { StoreContextProvider } from './features/common/store/StoreContextProvider';
 
 
 function App(): ReactElement {
@@ -102,29 +103,31 @@ function App(): ReactElement {
 
   return (
     <>
-      <Header onSubmit={onSubmit} cartCount={state.cartCount} />
-      <Routes>
-        <Route path="/" element={<ProductList products={state.products} />}
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <Product
-              product={state.product}
-              addToCart={() => addToCart(state.product.id)}
-            />
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <CartProductList
-              cartProducts={state.cartProducts}
-              removeFromCart={removeFromCart}
-            />
-          }
-        />
-      </Routes>
+    <StoreContextProvider>
+      <Header cartCount={state.cartCount} />
+        <Routes>
+          <Route path="/" element={<ProductList products={state.products} />}
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <Product
+                product={state.product}
+                addToCart={() => addToCart(state.product.id)}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <CartProductList
+                cartProducts={state.cartProducts}
+                removeFromCart={removeFromCart}
+              />
+            }
+          />
+        </Routes>
+    </StoreContextProvider>
     </>
   );
 }
