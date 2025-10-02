@@ -86,8 +86,8 @@ function App(): ReactElement {
   }, []);
 
   useEffect(() => {
-    if (matchHomePage) fetchProducts();
-  }, [matchHomePage]);
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     if (matchCartPage) fetchCartProducts();
@@ -106,7 +106,7 @@ function App(): ReactElement {
     <StoreContextProvider>
       <Header />
         <Routes>
-          <Route path="/" element={<ProductList products={state.products} />}
+          <Route path="/" element={<ProductList />}
           />
           <Route
             path="/product/:id"
