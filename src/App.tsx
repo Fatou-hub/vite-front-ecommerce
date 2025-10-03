@@ -112,7 +112,6 @@ function App(): ReactElement {
             path="/product/:id"
             element={
               <Product
-                product={state.product}
                 addToCart={() => addToCart(state.product.id)}
               />
             }
