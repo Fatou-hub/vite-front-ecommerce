@@ -3,19 +3,14 @@ import { Panorama } from "@mui/icons-material";
 import classNames from "classnames";
 import AddCartButton from "../../../../cart/add-cart-product/ui/AddCartButton";
 import useProduct from "../../hooks/useProduct";
-
-type Props = {
-    
-    addToCart: () => void;
-}
+import useAddToCart from "../../../../cart/add-cart-product/hooks/useAddToCart";
 
 const borderStyle = 'border border-gray-300 border-solid rounded-lg';
 
-const Product = ({ 
-    addToCart, 
-}: Props): ReactElement => {
+const Product = (): ReactElement => {
     const { product } = useProduct();
-    const { name, picture, price, description} = product;
+    const { addToCart} = useAddToCart();
+    const { id, name, picture, price, description} = product;
     return (
         <div>
             <h1 className='text-2xl mb-4'>{name}</h1>
@@ -39,7 +34,7 @@ const Product = ({
                     'h-fit')}>
                 <p className="text-4xl font-bold">{price}€</p>
                 <div className="mt-4">
-                <AddCartButton addToCart={addToCart}/>
+                <AddCartButton addToCart={() => addToCart(id)}/>
                 </div>
                 </div>
             </div>
