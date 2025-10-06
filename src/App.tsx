@@ -111,9 +111,7 @@ function App(): ReactElement {
           <Route
             path="/product/:id"
             element={
-              <Product
-                addToCart={() => addToCart(state.product.id)}
-              />
+              <Product/>
             }
           />
           <Route
